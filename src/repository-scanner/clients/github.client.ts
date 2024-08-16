@@ -70,17 +70,17 @@ export class GitHubClient implements RepositoryClient {
     }
 
     public async getFileContent(detailsRequest: RepositoryFileContentRequest): Promise<string> {
-        const fileContentData = await (await this.getOctokit(detailsRequest.token)).rest.repos.getContent({
+        const fileContent = await (await this.getOctokit(detailsRequest.token)).rest.repos.getContent({
             owner: detailsRequest.owner,
             repo: detailsRequest.name,
             path: detailsRequest.path
         });
         
-        if (!fileContentData || !fileContentData.data.content) {
+        if (!fileContent || !fileContent.data.content) {
             return "";
         }
 
-        return Buffer.from(fileContentData.data.content, fileContentData.data.encoding).toString();
+        return Buffer.from(fileContent.data.content, fileContent.data.encoding).toString();
     }
 
     public async getWebhooks(detailsRequest: RepositoryDetailsRequest): Promise<RepositoryWebhookResponse[]> {

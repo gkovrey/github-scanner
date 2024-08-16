@@ -66,7 +66,7 @@ export class RepositoryScannerService {
             return "";
         }
 
-        const firstFile = searchResponse.items.pop();
+        const firstFile = searchResponse.items.shift();
 
         return this.getFileContent({
             ...detailsRequest,
