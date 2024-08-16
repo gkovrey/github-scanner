@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Repository {
+  name: String!
+  size: Int!
+  owner: String!
+}
+
+type RepositoryDetails {
+  name: String!
+  size: Float!
+  owner: String!
+  isPrivate: Boolean!
+  fileCount: Int!
+  ymlContent: String
+  webhooks: [String!]!
+}
+
+type Query {
+  repositories(RepositoryListRequest: RepositoryListRequest!): [Repository!]!
+  repository(RepositoryDetailsRequest: RepositoryDetailsRequest!): RepositoryDetails!
+}
+
+input RepositoryListRequest {
+  token: String!
+  page: Int
+  perPage: Int
+}
+
+input RepositoryDetailsRequest {
+  token: String!
+  page: Int
+  perPage: Int
+  owner: String!
+  name: String!
+}
